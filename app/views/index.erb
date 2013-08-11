@@ -1,35 +1,46 @@
-<style type="text/css">
-  .container {
-    margin: 20px auto;
-    width: 600px;
-    padding: 0px 20px 20px 20px;
-    border: 1px dotted black;
-  }
-  th {
-    text-align: left;
-  }
-</style>
+<div id="item-template" class="hide-item">
+  <form class='big-button' action="/" method="post">
+    <input type="text" name="item[name]">
+    <input type="submit" value="Add Item To List">
+    <input type="button" value="Cancel" class="cancel">
+  </form>
+</div>
+
+<div class='row-template' style="display:none;">
+  <table >
+    <tbody>
+      <tr class="item">
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
 <div class="container">
-  <h1>Welcome to Sinatra!</h1>
-  <p>Hello, world!</p>
-
-  <table>
-    <tr>
-      <th>File Description</th>
-      <th>File Location</th>
-    </tr>
-    <tr>
-      <td>This view file</td>
-      <td><code><%= __FILE__.gsub(Sinatra::Application.root, '') %></code></td>
-    </tr>
-    <tr>
-      <td>The layout file</td>
-      <td><code><%= File.expand_path('../layout.erb', __FILE__).gsub(Sinatra::Application.root, '') %></code></td>
-    </tr>
-    <tr>
-      <td>The current controller</td>
-      <td><code><%= File.expand_path('../../controllers/index.rb', __FILE__).gsub(Sinatra::Application.root, '') %></code></td>
-    </tr>
+  <h2>Item List</h2>
+  <table id='table-list'>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Position</th>
+      </tr>
+    </thead>
+    <tbody class="sortable-list">
+      <% @items.each_with_index do |item| %>
+        <tr class="item" id="id_<%= item.id %>">
+          <td><%= item.id %></td>
+          <td><%= item.name %></td>
+          <td><%= item.position %></td>
+        </tr>
+      <% end %>
+    </tbody>
+    <tfoot>
+      <tr colspan='0'>
+        <td><button class="big-button" id="add-item">New Item</button></td>
+      </tr>
+    </tfoot>
   </table>
 </div>

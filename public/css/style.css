@@ -1,0 +1,36 @@
+.sortable-list tr td {
+  border: 1px solid #999;
+  background-color: #CCC;
+  padding: 5px;
+}
+
+body {
+  font-family: sans-serif;
+}
+
+.big-button {
+  width: 100px;
+  overflow: visible;
+}
+
+th {
+  padding: 4px;
+  margin: 5px;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #cdcdcd;
+}
+
+tbody tr:nth-child(odd) {
+  background-color: #bcbcbc;
+}
+
+table {
+  background-color: #eee;
+  border: 1px solid #bbb; 
+}
+
+.hide-item {
+  display: none;
+}
